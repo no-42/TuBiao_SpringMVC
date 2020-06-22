@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//http://mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.WorkDataMapper">
+    <insert id="insertData" parameterType="WorkData">
+        insert into
+		greenconstruction
+		(work_id,pm25,pm10,noise,domesticelectricity,ofel,industrialelectricity,domesticwater,officewater,industrialwater,aqi)
+		values
+		(#{work_id},#{pm25},#{pm10},#{noise},#{domesticelectricity},#{ofel},#{industrialelectricity},#{domesticwater},#{officewater},#{industrialwater},#{aqi})
+    </insert>
+    <select id="getAQI" parameterType="int" resultType="WorkData">
+        select aqi from greenconstruction where worksite=#{worksite} and DATE_FORMAT(data ,'%Y-%m')=DATE_FORMAT(CURDATE(),'%Y-%m')
+    </select>
+    <select id="getAQIYear" parameterType="int" resultType="WorkData">
+        select aqi from greenconstruction where worksite=#{worksite} and DATE_FORMAT(data ,'%Y')=DATE_FORMAT(CURDATE(),'%Y')
+    </select>
+    <select id="getNoise" parameterType="int" resultType="WorkData">
+        select noise from greenconstruction where worksite=#{worksite} and DATE_FORMAT(data ,'%Y-%m')=DATE_FORMAT(CURDATE(),'%Y-%m')
+    </select>
+    <select id="getNoiseYear" parameterType="int" resultType="WorkData">
+        select noise from greenconstruction where worksite=#{worksite} and DATE_FORMAT(data ,'%Y')=DATE_FORMAT(CURDATE(),'%Y')
+    </select>
+    <select id="getWaterMouth" parameterType="int" resultType="WorkData">
+        select domesticwater,officewater,industrialwater,date_format(data,'%Y-%m') as data from greenconstruction where worksite=#{worksite} and DATE_FORMAT(data,'%Y-%m')=DATE_FORMAT(CURDATE(),'%Y-%m')
+    </select>
+    <select id="getWaterYear" parameterType="int" resultType="WorkData">
+        select domesticwater,officewater,industrialwater,date_format(data,'%Y-%m') as data from greenconstruction where worksite=#{worksite} and DATE_FORMAT(data,'%Y')=DATE_FORMAT(CURDATE(),'%Y')
+    </select>
+    <select id="getEleMounth" parameterType="int" resultType="WorkData">
+        select industrialelectricity,ofel,domesticelectricity,DATE_FORMAT(data,'%Y-%m') as data from greenconstruction where worksite=#{worksite} and DATE_FORMAT(data,'%Y-%m')=DATE_FORMAT(CURDATE(),'%Y-%m')
+    </select>
+    <select id="getEleYear" parameterType="int" resultType="WorkData">
+        select industrialelectricity,ofel,domesticelectricity,DATE_FORMAT(data,'%Y-%m') as data from greenconstruction where worksite=#{worksite} and DATE_FORMAT(data,'%Y')=DATE_FORMAT(CURDATE(),'%Y')
+    </select>
+</mapper>

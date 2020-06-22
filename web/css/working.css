@@ -1,0 +1,16 @@
+*{margin: 0px; padding: 0px;}
+#mainbox{
+	width: 1200px;
+	height: 2000px;
+	margin: auto;
+}
+#text{
+	margin-top: 300px;
+	margin-left: 300px;
+	width: auto;
+	height: auto;
+}
+#show{
+	margin-left: 300px;
+	margin-top: 0px;
+}

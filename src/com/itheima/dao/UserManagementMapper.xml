@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//http://mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.UserManagementMapper">
+    <sql id="UserWhere">
+        <where>
+            <if test="nickname != null">
+                nickname=#{nickname}
+            </if>
+            <if test="password != null">
+                password=#{password}
+            </if>
+            <if test="phone != null">
+                phone=#{phone}
+            </if>
+            <if test="email != null">
+                email=#{email}
+            </if>
+            <if test="worksite != null">
+                worksite=#{worksite}
+            </if>
+            <if test="grade != grade">
+                grade=#{grade}
+            </if>
+        </where>
+    </sql>
+    <select id="getUsers" resultType="Player">
+        select * from user
+    </select>
+    <delete id="deleteUsers" parameterType="Player">
+        delete from user
+        <include refid="UserWhere"/>
+    </delete>
+    <update id="updateUsers" parameterType="Player">
+        update user
+        <set>
+            <if test="nickname != null">
+                nickname=#{nickname}
+            </if>
+            <if test="password != null">
+                password=#{password}
+            </if>
+            <if test="phone != null">
+                phone=#{phone}
+            </if>
+            <if test="email != null">
+                email=#{email}
+            </if>
+            <if test="worksite != null">
+                worksite=#{worksite}
+            </if>
+            <if test="grade != grade">
+                grade=#{grade}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <insert id="insertUsers" parameterType="Player">
+        insert into
+        user(nickname,password,phone,email,worksite,grade) values
+		(#{nickname},#{password},#{phone},#{email},#{worksite},#{grade})
+    </insert>
+    <select id="getWorksite" resultType="WorkSite">
+        select * from worksites
+    </select>
+    <select id="getGrade" parameterType="int" resultType="Grades">
+        select * from grades where grade &gt;= #{grade}
+    </select>
+    <select id="getGrades" resultType="Grades">
+        select * from grades
+    </select>
+    <select id="getMessages" parameterType="String" resultType="Player">
+        select u.*,m.user_ID_card,m.user_home from user u,user_messages m where u.id=m.user_id and id=#{id};
+    </select>
+</mapper>

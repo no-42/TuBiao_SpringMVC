@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#main {
+	align-content: center;
+	margin: auto;
+	background-color: blue;
+	width: 1350px;
+	height: 1350px;
+}
+
+#top {
+	position: absolute;
+	width: 1350px;
+	height: 40px;
+	background-color: yellow;
+}
+
+#second {
+	width: 1350px;
+	height: 40px;
+	position: absolute;
+	margin-top: 40px;
+	background-color: azure;
+}
+
+#third {
+	position: absolute;
+	width: 1350px;
+	height: 1270px;
+	margin-top: 80px;
+	background-color: coral;
+}
+
+#adduser {
+	font-size: 12px;
+}
+
+.list>thead>tr>td,
+.list>thead>tr>th {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #ddd
+}
