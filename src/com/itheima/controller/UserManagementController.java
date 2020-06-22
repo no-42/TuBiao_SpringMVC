@@ -29,7 +29,7 @@ public class UserManagementController {
 
     @RequestMapping("/message")
     public String Jump() {
-        return "";//跳转的jsp
+        return "";
     }
 
     @RequestMapping("/nickInfo")
